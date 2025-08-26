@@ -7,26 +7,26 @@ import base64
 # -----------------------
 # Function to set background
 # -----------------------
-def set_bg(image_file):
-    with open(image_file, "rb") as f:
-        data = f.read()
-    encoded = base64.b64encode(data).decode()
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded}");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+# def set_bg(image_file):
+#     with open(image_file, "rb") as f:
+#         data = f.read()
+#     encoded = base64.b64encode(data).decode()
+#     st.markdown(
+#         f"""
+#         <style>
+#         .stApp {{
+#             background-image: url("data:image/jpg;base64,{encoded}");
+#             background-size: cover;
+#             background-position: center;
+#             background-attachment: fixed;
+#         }}
+#         </style>
+#         """,
+#         unsafe_allow_html=True
+#     )
 
-# Set background
-set_bg("download.jpg")
+# # Set background
+# set_bg("download.jpg")
 
 # -----------------------
 # Page config
@@ -118,3 +118,4 @@ if st.button("Find Houses"):
         filtered_original = data.loc[filtered_lower.index]
         st.markdown("### Filtered Houses")
         st.dataframe(filtered_original.reset_index(drop=True))
+
