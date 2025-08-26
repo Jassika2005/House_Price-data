@@ -4,6 +4,10 @@ import joblib
 import numpy as np
 import base64
 
+# Load model and scaler
+model = joblib.load("model.pkl")
+scaler = joblib.load("scaler.pkl")
+
 # -----------------------
 # Function to set background
 # -----------------------
@@ -118,4 +122,5 @@ if st.button("Find Houses"):
         filtered_original = data.loc[filtered_lower.index]
         st.markdown("### Filtered Houses")
         st.dataframe(filtered_original.reset_index(drop=True))
+
 
