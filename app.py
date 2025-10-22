@@ -4,33 +4,29 @@ import joblib
 import numpy as np
 import base64
 
-# Load model and scaler
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
-
 # -----------------------
 # Function to set background
 # -----------------------
-# def set_bg(image_file):
-#     with open(image_file, "rb") as f:
-#         data = f.read()
-#     encoded = base64.b64encode(data).decode()
-#     st.markdown(
-#         f"""
-#         <style>
-#         .stApp {{
-#             background-image: url("data:image/jpg;base64,{encoded}");
-#             background-size: cover;
-#             background-position: center;
-#             background-attachment: fixed;
-#         }}
-#         </style>
-#         """,
-#         unsafe_allow_html=True
-#     )
+def set_bg(image_file):
+    with open(image_file, "rb") as f:
+        data = f.read()
+    encoded = base64.b64encode(data).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# # Set background
-# set_bg("download.jpg")
+# Set background
+set_bg("download.jpg")
 
 # -----------------------
 # Page config
@@ -42,7 +38,7 @@ st.title("🏠 Housing Price Finder")
 # Load dataset & models
 # -----------------------
 try:
-    data = pd.read_csv("C:\Users\HP\Downloads\Housing_RL (1).csv")
+    data = pd.read_csv("Housing_RL (1).csv")
 except Exception as e:
     st.error(f"Could not load dataset: {e}")
     st.stop()
@@ -122,7 +118,5 @@ if st.button("Find Houses"):
         filtered_original = data.loc[filtered_lower.index]
         st.markdown("### Filtered Houses")
         st.dataframe(filtered_original.reset_index(drop=True))
-
-
 
 
