@@ -42,7 +42,7 @@ st.title("🏠 Housing Price Finder")
 # Load dataset & models
 # -----------------------
 try:
-    data = pd.read_csv("Housing_RL (1).csv")
+    data = pd.read_csv("C:\Users\HP\Downloads\Housing_RL (1).csv")
 except Exception as e:
     st.error(f"Could not load dataset: {e}")
     st.stop()
@@ -122,6 +122,7 @@ if st.button("Find Houses"):
         filtered_original = data.loc[filtered_lower.index]
         st.markdown("### Filtered Houses")
         st.dataframe(filtered_original.reset_index(drop=True))
+
 
 
 
